@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href='/css/index.css'>
+    <title>To do list</title>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            
+        <h2>Add your todo here <img src="/image/todo.jpg" ></h2>
+            
+    <div class="row">
+        <form action="/create-task" method="post">
+            <input type="text" placeholder="Add your text" name="todoValue" required>
+            <button type="submit">Add</button>   
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category" required>
+                <option selected>Personal</option>
+                <option value="work">Work</option>
+                <option value="shopping">Shopping</option>
+                <option value="other">Other</option>
+              </select>
+              <input class="calender" type="date" name="date" required>
+    </form>
+    
+    </div>
+    
+        <ul id="list-container">
+
+                <form action="/delete" method="post">
+                    <% todo.forEach(element => { %>
+                        
+                    <div class="displayList">
+                        <div id="todoList">
+                            <li>
+                                <input class="check" type="checkbox" name="deleteValue" id="<%= element.todo %>" value="<%= element.todo %>">
+                                <%= element.todo %>  
+                                <span class="showDate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                      </svg>
+                                    <%= element.date %>
+                                </span>
+                            </li>
+                            
+                        </div>
+                        
+                        <p>
+                            <%=element.category %>
+                        </p>
+                    </div>
+                    
+
+           <% }) %>  
+        <button type="submit" class="del-btn">Delete</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
+        </form>     
+            
+            
+        </ul>
+    </div>
+</div>
+</body>
+</html>

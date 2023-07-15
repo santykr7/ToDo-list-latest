@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .task-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 1px solid orange; /* Square border color */
+      border-radius: 3px; /* Square border radius */
+    }
+
+    .task-icon.checked {
+      background-color: orange; /* Checked circle background color */
+      border: none;
+    }
+
+    .task-icon.checked i {
+      color: white; /* Checked circle icon color */
+    }
+
+    .task-icon i {
+      color: orange; /* Square icon color */
+    }
+
+    .task-text {
+      font-size: 18px;
+    }
+
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <ul id="todo-list">
+    <li>
+      <span class="task-icon">
+        <i class="far fa-check"></i>
+      </span>
+      <span class="task-text">Task 1</span>
+    </li>
+    <li>
+      <span class="task-icon">
+        <i class="far fa-check"></i>
+      </span>
+      <span class="task-text">Task 2</span>
+    </li>
+    <li>
+      <span class="task-icon">
+        <i class="far fa-check"></i>
+      </span>
+      <span class="task-text">Task 3</span>
+    </li>
+  </ul>
+
+  <script>
+    const todoList = document.getElementById("todo-list");
+    const tasks = todoList.getElementsByClassName("task-icon");
+
+    Array.from(tasks).forEach((task) => {
+      task.addEventListener("click", function () {
+        const listItem = this.parentNode;
+        const taskIcon = this.querySelector("i");
+        if (listItem.classList.contains("completed")) {
+          listItem.classList.remove("completed");
+          taskIcon.classList.remove("fas");
+          taskIcon.classList.add("far");
+        } else {
+          listItem.classList.add("completed");
+          taskIcon.classList.remove("far");
+          taskIcon.classList.add("fas");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
